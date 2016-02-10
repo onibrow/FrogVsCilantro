@@ -30,7 +30,7 @@ class stickman:
             self.x -= 5
         elif right:
             self.x += 5
-        elif up:
+        if up:
             self.y -= 5
         elif down:
             self.y += 5
