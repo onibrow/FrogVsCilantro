@@ -6,6 +6,7 @@ import pygame
 
 class game:
 
+    # INITIALIZE GAME
     pygame.init()
 
     colors = colors()
@@ -21,6 +22,7 @@ class game:
     pygame.mouse.set_visible(False)
 
     # OBJECT INSTANTIATION
+    background_image = pygame.image.load("City.jpg")
     stick = stickman(screen, 0, 0)
 
     # WINDOW RUN TIME
@@ -57,7 +59,8 @@ class game:
         # GAME LOGIC
 
         # DRAWING CODE
-        screen.fill(BG_COLOR) # clear screen
+        #screen.fill(BG_COLOR) # clear screen
+        screen.blit(background_image, [0, 0])
 
         obj.draw_tree(screen, 200, -200)
 
