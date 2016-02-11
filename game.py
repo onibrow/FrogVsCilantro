@@ -22,8 +22,9 @@ class game:
     pygame.mouse.set_visible(False)
 
     # OBJECT INSTANTIATION
-    background_image = pygame.image.load("City.jpg")
+    background_image = pygame.image.load("background.jpg")
     stick = stickman(screen, 0, 0)
+    player_image = pygame.image.load("frog.png")
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
@@ -61,11 +62,6 @@ class game:
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
-
-        obj.draw_tree(screen, 200, -200)
-
-        stick.move(left_press, right_press, up_press, down_press)
-        stick.draw(screen, stick.x, stick.y)
 
         # UPDATE
         pygame.display.flip()
