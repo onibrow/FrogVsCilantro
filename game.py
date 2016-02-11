@@ -2,6 +2,8 @@ from math import *
 from objects import *
 from colors import *
 from stickman import *
+from player import *
+
 import pygame
 
 class game:
@@ -23,8 +25,8 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
-    stick = stickman(screen, 0, 0)
-    player_image = pygame.image.load("frog.png")
+    player = player(100, size_x // 2, size_y // 2)
+    player_image = player.getImage()
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
@@ -58,10 +60,12 @@ class game:
                     down_press = False
 
         # GAME LOGIC
+        player.move(left_press, right_press, up_press, down_press)
 
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
+        screen.blit(player_image, player.getPos())
 
         # UPDATE
         pygame.display.flip()
