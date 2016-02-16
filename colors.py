@@ -1,22 +1,25 @@
 class colors:
 
-    def __init__(self):
-        self.use = "Setting up colors" 
-
-    def BLACK(self):
+    @staticmethod
+    def BLACK():
         return (   0,   0,   0)
 
-    def WHITE(self):
+    @staticmethod
+    def WHITE():
         return ( 255, 255, 255)
 
-    def GREEN(self):
+    @staticmethod
+    def GREEN():
         return (   0, 255,   0)
 
-    def RED(self):
+    @staticmethod
+    def RED():
         return ( 255,   0,   0)
 
-    def BLUE(self):
+    @staticmethod
+    def BLUE():
         return (   0,   0, 255)
 
-    def BROWN(self):
+    @staticmethod
+    def BROWN():
         return ( 145,  63,  35)

@@ -12,3 +12,9 @@ class entity():
 
     def getName(self):
         return name
+
+    def getPos(self):
+        return [self.x, self.y]
+
+    def getImage(self):
+        return self.img

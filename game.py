@@ -11,7 +11,6 @@ class game:
 
     # INITIALIZE GAME
     pygame.init()
-    colors = colors()
 
     # CONTROLS
     left_press, right_press, up_press, down_press = False, False, False, False 
@@ -30,8 +29,9 @@ class game:
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
+
+    # MAIN EVENT LOOP
     while (running):
-        # MAIN EVENT LOOP
         for event in pygame.event.get(): # User did someting
             if event.type == pygame.QUIT:
                 running = False
