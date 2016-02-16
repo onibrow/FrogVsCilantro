@@ -1,21 +1,12 @@
+from entity import *
 from objects import *
 from colors import *
 import pygame
 
-class player:
+class player(entity):
 
-    player_image = pygame.image.load("player.png")
-
-    def __init__(self, health, x, y):
-        self.health = health
-        self.x = x
-        self.y = y
-
-    def getImage(self):
-        return self.player_image 
-
-    def getPos(self):
-        return [self.x, self.y]
+    def __init__(self, name, x, y, img):
+        entity.__init__(self, name, x, y, img)
 
     def move(self, left, right, up, down):
         if left:
@@ -26,6 +17,3 @@ class player:
             self.y -= 5
         elif down:
             self.y += 5
-
-    def damage(self, d):
-        self.health -= d

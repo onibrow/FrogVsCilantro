@@ -3,6 +3,7 @@ from objects import *
 from colors import *
 from stickman import *
 from player import *
+from entity import *
 
 import pygame
 
@@ -10,8 +11,8 @@ class game:
 
     # INITIALIZE GAME
     pygame.init()
-
     colors = colors()
+
     # CONTROLS
     left_press, right_press, up_press, down_press = False, False, False, False 
 
@@ -25,8 +26,7 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
-    player = player(100, size_x // 2, size_y // 2)
-    player_image = player.getImage()
+    player = player("Frog", size_x // 2, size_y // 2, pygame.image.load("player.png"))
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
@@ -37,8 +37,6 @@ class game:
                 running = False
             # User pressed down on a key
             elif event.type == pygame.KEYDOWN:
-                # Figure out if it was an arrow key. If so
-                # adjust speed.
                 if event.key == pygame.K_a:
                     left_press = True
                 elif event.key == pygame.K_d:
@@ -49,7 +47,6 @@ class game:
                     down_press = True
             # User let up on a key
             elif event.type == pygame.KEYUP:
-                # If it is an arrow key, reset vector back to zero
                 if event.key == pygame.K_a:
                     left_press = False
                 elif event.key == pygame.K_d:
@@ -65,7 +62,7 @@ class game:
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
-        screen.blit(player_image, player.getPos())
+        screen.blit(player.img, player.getPos())
 
         # UPDATE
         pygame.display.flip()
