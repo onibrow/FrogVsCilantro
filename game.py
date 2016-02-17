@@ -24,9 +24,9 @@ class game:
     pygame.mouse.set_visible(False)
 
     # OBJECT INSTANTIATION
-    background_image = pygame.image.load("background.jpg")
-    player = player("Rick", 0, 0, 
-                    "frontfrog1.png", "frontfrog2.png", "backfrog1.png", "backfrog2.png", 
+    background_image = pygame.image.load("img/background.jpg")
+    player = player("Rick", 300 , 200 , 
+                    "img/frontfrog1.png", "img/frontfrog2.png", "img/backfrog1.png", "img/backfrog2.png", 
                     size_x, size_y)
 
     # WINDOW RUN TIME
