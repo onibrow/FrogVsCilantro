@@ -1,6 +1,4 @@
 from entity import *
-from objects import *
-from colors import *
 import pygame
 
 class player(entity):

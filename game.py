@@ -25,13 +25,14 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
-    player = player("Frog", size_x // 2, size_y // 2, pygame.image.load("player.png"))
+    player = player("Frog", 0, 0, "player.png")
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
 
     # MAIN EVENT LOOP
     while (running):
+        player.collide()
         for event in pygame.event.get(): # User did someting
             if event.type == pygame.QUIT:
                 running = False
