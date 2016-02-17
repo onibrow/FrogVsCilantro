@@ -25,7 +25,10 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
-    player = player("Frog", 0, 0, "player.png", size_x, size_y)
+    player = player("Rick", 0, 0, 
+                    "frontfrog1.png", "frontfrog2.png", "backfrog1.png", "backfrog2.png", 
+                    size_x, size_y)
+
     garlic = entity("Garlic", 100, 100, "garlic.png")
 
     # WINDOW RUN TIME
@@ -63,7 +66,7 @@ class game:
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
-        screen.blit(player.img, player.getPos())
+        screen.blit(player.getImage(), player.getPos())
         screen.blit(garlic.img, garlic.getPos())
 
         # UPDATE
