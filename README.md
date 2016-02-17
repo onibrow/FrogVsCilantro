@@ -1,3 +1,6 @@
-# py_graphics
+# Frogs VS Cilantro
 
-Learning some python graphics libraries
+I hate cilantro,
+However, I do like frogs
+Save that cute little frog
+*Me*
