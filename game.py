@@ -4,6 +4,7 @@ from colors import *
 from stickman import *
 from player import *
 from entity import *
+from cilantro import *
 
 import pygame
 
@@ -26,8 +27,13 @@ class game:
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("img/background.jpg")
     player = player("Rick", 300 , 200 , 
-                    "img/frontfrog1.png", "img/frontfrog2.png", "img/backfrog1.png", "img/backfrog2.png", 
+                    "img/frontfrog1.png", "img/frontfrog2.png", 
+                    "img/backfrog1.png", "img/backfrog2.png", 
                     size_x, size_y)
+    c1 = cilantro("c1", 0, 0, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 0.5, player.getPos())
+    c1.calcDisplace()
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
@@ -60,11 +66,13 @@ class game:
 
         # GAME LOGIC
         player.move(left_press, right_press, up_press, down_press)
+        c1.move()
 
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
         screen.blit(player.getImage(), player.getPos())
+        screen.blit(c1.getImage(), c1.getPos())
 
         # UPDATE
         pygame.display.flip()
@@ -74,3 +82,6 @@ class game:
 
     # QUIT THE GAME
     pygame.quit()
+    print(c1.angle)
+    print(c1.xMove)
+    print(c1.yMove)
