@@ -20,27 +20,27 @@ class entity():
         return self.img
 
     def getCorners(self):
-        top_right = (self.x + (self.size[0] // 2), self.y + (self.size[1] // 2))
-        top_left = (self.x - (self.size[0] // 2), self.y + (self.size[1] // 2))
-        bottom_right = (self.x + (self.size[0] // 2), self.y - (self.size[1] // 2))
-        bottom_left = (self.x - (self.size[0] // 2), self.y - (self.size[1] // 2))
+        top_right = (self.x + self.size[0], self.y)
+        top_left = self.getPos()
+        bottom_right = (self.x + self.size[0], self.y + self.size[1])
+        bottom_left = (self.x, self.y + self.size[1])
 
         return (top_right, top_left, bottom_right, bottom_left)
-
+    
     @staticmethod
     def pointInArea(point, area):
         x = point[0] < area[0][0] and point[0] > area[1][0]
-        y = point[1] < area[0][1] and point[1] > area[2][1]
+        y = point[1] > area[0][1] and point[1] < area[2][1]
         return x and y
 
     @staticmethod
     def areaInArea(a1, a2):
-        x = True
+        x = False
         for i in a1.getCorners():
-            x = x and pointIntArea(i, a2)
+            x = x or entity.pointInArea(i, a2.getCorners())
         for j in a2.getCorners():
-            x = x and pointIntArea(j, a1)
+            x = x or entity.pointInArea(j, a1.getCorners())
         return x
                  
     def collide(self, other):
-        return areaInArea(self.getCorners(), other.getCorners()) 
+        return entity.areaInArea(self, other) 

@@ -26,13 +26,13 @@ class game:
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
     player = player("Frog", 0, 0, "player.png")
+    garlic = entity("Garlic", 100, 100, "garlic.png")
 
     # WINDOW RUN TIME
     running, clock, obj = True, pygame.time.Clock(), objects()
 
     # MAIN EVENT LOOP
     while (running):
-        player.collide()
         for event in pygame.event.get(): # User did someting
             if event.type == pygame.QUIT:
                 running = False
@@ -64,7 +64,9 @@ class game:
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
         screen.blit(player.img, player.getPos())
+        screen.blit(garlic.img, garlic.getPos())
 
+        #print(player.getPos())
         # UPDATE
         pygame.display.flip()
 
