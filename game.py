@@ -25,7 +25,7 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("background.jpg")
-    player = player("Frog", 0, 0, "player.png")
+    player = player("Frog", 0, 0, "player.png", size_x, size_y)
     garlic = entity("Garlic", 100, 100, "garlic.png")
 
     # WINDOW RUN TIME
@@ -66,9 +66,11 @@ class game:
         screen.blit(player.img, player.getPos())
         screen.blit(garlic.img, garlic.getPos())
 
-        #print(player.getPos())
         # UPDATE
         pygame.display.flip()
+
+        if (player.collide(garlic)):
+            print("Frog touch garlic")
 
         # LIMIT TO 60 FPS
         clock.tick(60)
