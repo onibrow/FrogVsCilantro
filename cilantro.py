@@ -14,8 +14,6 @@ class cilantro(entity):
         self.dest = playerPos
         self.xMove, self.ymove = 0, 0
         self.which_image = 0
-
-    def calcDisplace(self):
         x = self.dest[0] - self.getPos()[0]
         y = self.dest[1] - self.getPos()[1] 
         x, y = x // min(x, y), y // min(x,y)
@@ -36,3 +34,6 @@ class cilantro(entity):
             self.img = pygame.transform.rotate(self.img2, -self.angle)
         elif self.which_image % 12 == 0:
             self.img = pygame.transform.rotate(self.img3, -self.angle)
+
+    def setPos(self, x, y):
+        self.x, self.y = x, y

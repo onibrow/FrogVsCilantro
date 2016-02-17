@@ -1,7 +1,7 @@
-from math import *
-from objects import *
+import math
+import random
+
 from colors import *
-from stickman import *
 from player import *
 from entity import *
 from cilantro import *
@@ -19,9 +19,8 @@ class game:
     # WINDOW SETUP
     size_x, size_y = 700, 500
     size = (size_x, size_y)
-    BG_COLOR = colors.BLUE()
     screen = pygame.display.set_mode(size)
-    pygame.display.set_caption("My Game")
+    pygame.display.set_caption("Frog vs Cilantro")
     pygame.mouse.set_visible(False)
 
     # OBJECT INSTANTIATION
@@ -30,13 +29,21 @@ class game:
                     "img/frontfrog1.png", "img/frontfrog2.png", 
                     "img/backfrog1.png", "img/backfrog2.png", 
                     size_x, size_y)
-    c1 = cilantro("c1", 0, 0, 
+    c_slow = cilantro("c", 0, 0, 
                   "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 0.5, player.getPos())
-    c1.calcDisplace()
+                  "img/cilantro3.png", 1, player.getPos())
+    c_med = cilantro("c", 0, 0, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
+    c_fast = cilantro("c", 0, 0, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
+    c_extreme = cilantro("c", 0, 0, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
 
     # WINDOW RUN TIME
-    running, clock, obj = True, pygame.time.Clock(), objects()
+    running, clock = True, pygame.time.Clock(), objects()
 
     # MAIN EVENT LOOP
     while (running):
@@ -66,13 +73,13 @@ class game:
 
         # GAME LOGIC
         player.move(left_press, right_press, up_press, down_press)
-        c1.move()
+        c_slow.move()
 
         # DRAWING CODE
         #screen.fill(BG_COLOR) # clear screen
         screen.blit(background_image, [0, 0])
         screen.blit(player.getImage(), player.getPos())
-        screen.blit(c1.getImage(), c1.getPos())
+        screen.blit(c_slow.getImage(), c_slow.getPos())
 
         # UPDATE
         pygame.display.flip()
@@ -82,6 +89,3 @@ class game:
 
     # QUIT THE GAME
     pygame.quit()
-    print(c1.angle)
-    print(c1.xMove)
-    print(c1.yMove)
