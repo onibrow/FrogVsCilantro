@@ -14,10 +14,10 @@ class cilantro(entity):
         self.dest = playerPos
         self.xMove, self.ymove = 0, 0
         self.which_image = 0
-        x = self.dest[0] - self.getPos()[0]
-        y = self.dest[1] - self.getPos()[1] 
-        x, y = x // min(x, y), y // min(x,y)
+        x = self.dest[0] - self.getPos()[0] + 0.1
+        y = self.dest[1] - self.getPos()[1] + 0.1
         self.angle = math.degrees(math.atan(x / y)) + 90
+        x, y = x // min(x, y), y // min(x,y)
         self.xMove = x * self.velocity
         self.yMove = y * self.velocity 
 

@@ -30,12 +30,23 @@ class game:
                     "img/frontfrog1.png", "img/frontfrog2.png", 
                     "img/backfrog1.png", "img/backfrog2.png", 
                     size_x, size_y)
-    c_slow = cilantro("c", 0, 0, 
+    c_ul = cilantro("c_ul", 10, 10, 
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
+    c_ur = cilantro("c_ur", size_x - 10, 10, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 0, player.getPos())
+    c_ll = cilantro("c_ll", 10, size_y - 10, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
+    c_lr = cilantro("c_lr", size_x - 10, size_y - 10, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
+    c_list = [c_ul, c_ur, c_ll, c_lr]
 
     # WINDOW RUN TIME
-    running, clock, lose = True, pygame.time.Clock(), False
+    running, clock = True, pygame.time.Clock()
+    window = entity("window", 0, 0, "img/background.jpg")
 
     # MAIN EVENT LOOP
     while (running):
@@ -67,19 +78,19 @@ class game:
                 elif event.key == pygame.K_s:
                     down_press = False
 
+        # DRAW BACKGROUND
+        screen.blit(background_image, [0, 0])
+
         # GAME LOGIC
         player.move(left_press, right_press, up_press, down_press)
-        c_slow.move()
-
-        # DRAWING CODE
-        #screen.fill(BG_COLOR) # clear screen
-        screen.blit(background_image, [0, 0])
         screen.blit(player.getImage(), player.getPos())
-        screen.blit(c_slow.getImage(), c_slow.getPos())
-
-        # Test Collision
-        if (player.collide(c_slow)):
-            running = False
+        for c in c_list:
+            c.move()
+            screen.blit(c.getImage(), c.getPos())
+            # COLLISION
+            if (player.collide(c)):
+                running = False
+        screen.blit(c_lr.getImage(), c_lr.getPos())
 
         # UPDATE
         pygame.display.flip()
@@ -92,3 +103,9 @@ class game:
 
     # Scores
     print("Your Score: " + str(score))
+    score_file = open('score.txt', 'rw')
+    high_score = int(score_file.readline())
+    if (high_score < score):
+        score_file.write(str(score))
+    print("High Score: " + score_file.readline())
+    score_file.close()
