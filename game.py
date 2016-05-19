@@ -43,7 +43,7 @@ class game:
                   "img/cilantro3.png", 1, player.getPos())
 
     # WINDOW RUN TIME
-    running, clock = True, pygame.time.Clock(), objects()
+    running, clock = True, pygame.time.Clock()
 
     # MAIN EVENT LOOP
     while (running):

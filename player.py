@@ -22,7 +22,7 @@ class player(entity):
             self.x = min(self.x + 3, self.x_bound - self.size[0])
             self.isMovingForward = True
         if up:
-            self.y = max(self.y - 3, 60)
+            self.y = max(self.y - 3, 0)
             self.isMovingBack = True
         elif down:
             self.y = min(self.y + 3, self.y_bound - self.size[1])
