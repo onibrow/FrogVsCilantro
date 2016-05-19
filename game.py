@@ -12,6 +12,7 @@ class game:
 
     # INITIALIZE GAME
     pygame.init()
+    score = 0
 
     # CONTROLS
     left_press, right_press, up_press, down_press = False, False, False, False 
@@ -32,22 +33,17 @@ class game:
     c_slow = cilantro("c", 0, 0, 
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_med = cilantro("c", 0, 0, 
-                  "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 1, player.getPos())
-    c_fast = cilantro("c", 0, 0, 
-                  "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 1, player.getPos())
-    c_extreme = cilantro("c", 0, 0, 
-                  "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 1, player.getPos())
 
     # WINDOW RUN TIME
-    running, clock = True, pygame.time.Clock()
+    running, clock, lose = True, pygame.time.Clock(), False
 
     # MAIN EVENT LOOP
     while (running):
-        for event in pygame.event.get(): # User did someting
+        # Update Player Score
+        score += 1
+
+        # User did someting
+        for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
                 running = False
             # User pressed down on a key
@@ -81,6 +77,10 @@ class game:
         screen.blit(player.getImage(), player.getPos())
         screen.blit(c_slow.getImage(), c_slow.getPos())
 
+        # Test Collision
+        if (player.collide(c_slow)):
+            running = False
+
         # UPDATE
         pygame.display.flip()
 
@@ -89,3 +89,6 @@ class game:
 
     # QUIT THE GAME
     pygame.quit()
+
+    # Scores
+    print("Your Score: " + str(score))
