@@ -33,13 +33,13 @@ class game:
     c_ul = cilantro("c_ul", 10, 10, 
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_ur = cilantro("c_ur", size_x - 10, 10, 
-                  "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 0, player.getPos())
-    c_ll = cilantro("c_ll", 10, size_y - 10, 
+    c_ur = cilantro("c_ur", size_x - 100, 10, 
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_lr = cilantro("c_lr", size_x - 10, size_y - 10, 
+    c_ll = cilantro("c_ll", 10, size_y - 100, 
+                  "img/cilantro1.png", "img/cilantro2.png",
+                  "img/cilantro3.png", 1, player.getPos())
+    c_lr = cilantro("c_lr", size_x - 100, size_y - 100, 
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
     c_list = [c_ul, c_ur, c_ll, c_lr]
@@ -103,9 +103,3 @@ class game:
 
     # Scores
     print("Your Score: " + str(score))
-    score_file = open('score.txt', 'rw')
-    high_score = int(score_file.readline())
-    if (high_score < score):
-        score_file.write(str(score))
-    print("High Score: " + score_file.readline())
-    score_file.close()

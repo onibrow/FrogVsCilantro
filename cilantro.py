@@ -17,13 +17,15 @@ class cilantro(entity):
         x = self.dest[0] - self.getPos()[0] + 0.1
         y = self.dest[1] - self.getPos()[1] + 0.1
         self.angle = math.degrees(math.atan(x / y)) + 90
-        x, y = x // min(x, y), y // min(x,y)
+        x, y = x / max(x, y), y / max(x,y)
+        print(x)
+        print(y)
         self.xMove = x * self.velocity
         self.yMove = y * self.velocity 
 
     def move(self):
         self.which_image += 1
-        self.selectImage()
+        #self.selectImage()
         self.x = self.x + self.xMove
         self.y = self.y + self.yMove
 
