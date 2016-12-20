@@ -2,6 +2,7 @@ from entity import *
 import pygame
 import math
 
+
 class cilantro(entity):
 
     def __init__(self, name, x, y, img1, img2, img3, vel, playerPos):
@@ -16,16 +17,18 @@ class cilantro(entity):
         self.which_image = 0
         x = self.dest[0] - self.getPos()[0] + 0.1
         y = self.dest[1] - self.getPos()[1] + 0.1
-        self.angle = math.degrees(math.atan(x / y)) + 90
+        rads = math.atan2(-y,x)
+        rads %= 2*math.pi
+        self.angle = math.degrees(rads)
         x, y = x / max(x, y), y / max(x,y)
-        print(x)
-        print(y)
+        self.angle = 90
+        print(self.angle)
         self.xMove = x * self.velocity
-        self.yMove = y * self.velocity 
+        self.yMove = y * self.velocity
 
     def move(self):
         self.which_image += 1
-        #self.selectImage()
+        self.selectImage()
         self.x = self.x + self.xMove
         self.y = self.y + self.yMove
 

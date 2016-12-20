@@ -15,7 +15,7 @@ class game:
     score = 0
 
     # CONTROLS
-    left_press, right_press, up_press, down_press = False, False, False, False 
+    left_press, right_press, up_press, down_press = False, False, False, False
 
     # WINDOW SETUP
     size_x, size_y = 700, 500
@@ -26,22 +26,22 @@ class game:
 
     # OBJECT INSTANTIATION
     background_image = pygame.image.load("img/background.jpg")
-    player = player("Rick", 300 , 200 , 
-                    "img/frontfrog1.png", "img/frontfrog2.png", 
-                    "img/backfrog1.png", "img/backfrog2.png", 
+    player = player("Rick", 300 , 200 ,
+                    "img/frontfrog1.png", "img/frontfrog2.png",
+                    "img/backfrog1.png", "img/backfrog2.png",
                     size_x, size_y)
-    c_ul = cilantro("c_ul", 10, 10, 
+    c_ul = cilantro("c_ul", 10, 10,
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_ur = cilantro("c_ur", size_x - 100, 10, 
+    c_ur = cilantro("c_ur", size_x - 100, 10,
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_ll = cilantro("c_ll", 10, size_y - 100, 
+    c_ll = cilantro("c_ll", 10, size_y - 100,
                   "img/cilantro1.png", "img/cilantro2.png",
                   "img/cilantro3.png", 1, player.getPos())
-    c_lr = cilantro("c_lr", size_x - 100, size_y - 100, 
+    c_lr = cilantro("c_lr", size_x - 100, size_y - 100,
                   "img/cilantro1.png", "img/cilantro2.png",
-                  "img/cilantro3.png", 1, player.getPos())
+                  "img/cilantro3.png", -1, player.getPos())
     c_list = [c_ul, c_ur, c_ll, c_lr]
 
     # WINDOW RUN TIME
@@ -54,7 +54,7 @@ class game:
         score += 1
 
         # User did someting
-        for event in pygame.event.get(): 
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             # User pressed down on a key
@@ -62,9 +62,9 @@ class game:
                 if event.key == pygame.K_a:
                     left_press = True
                 elif event.key == pygame.K_d:
-                    right_press = True 
+                    right_press = True
                 elif event.key == pygame.K_w:
-                    up_press = True 
+                    up_press = True
                 elif event.key == pygame.K_s:
                     down_press = True
             # User let up on a key
@@ -72,9 +72,9 @@ class game:
                 if event.key == pygame.K_a:
                     left_press = False
                 elif event.key == pygame.K_d:
-                    right_press = False 
+                    right_press = False
                 elif event.key == pygame.K_w:
-                    up_press = False 
+                    up_press = False
                 elif event.key == pygame.K_s:
                     down_press = False
 
@@ -90,7 +90,6 @@ class game:
             # COLLISION
             if (player.collide(c)):
                 running = False
-        screen.blit(c_lr.getImage(), c_lr.getPos())
 
         # UPDATE
         pygame.display.flip()
