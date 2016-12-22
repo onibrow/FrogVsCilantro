@@ -25,8 +25,7 @@ class cilantro(entity):
         norm = math.sqrt(x * x + y * y)
         rads = math.atan2(-y,x)
         rads %= 2*math.pi
-        self.angle = 180
-        print(self.angle)
+        self.angle = 0
         self.xMove = x * self.velocity
         self.yMove = y * self.velocity
 
@@ -45,17 +44,15 @@ class cilantro(entity):
             self.img = pygame.transform.rotate(self.img3, -self.angle)
 
     def refresh(self, playerPos):
-        #print(self.x, self.maxX, self.y, self.maxY)
         if (self.x < 0 or self.x > self.maxX or self.y < 0 or self.y > self.maxY):
-            print("refresH")
             self.x, self.y = self.origX, self.origY
-            self.velocity = random.randrange(2, 6)
-            print(self.velocity)
-            x = self.dest[0] - self.getPos()[0] + 0.1
-            y = self.dest[1] - self.getPos()[1] + 0.1
+            self.velocity = random.randrange(3, 8)
+            x = playerPos[0] - self.getPos()[0] + 0.1
+            y = playerPos[1] - self.getPos()[1] + 0.1
             norm = math.sqrt(x * x + y * y)
             x, y = x / norm, y / norm
             self.xMove = x * self.velocity
             self.yMove = y * self.velocity
 
-
+    def setVelocity(self, velocity):
+        self.velocity = velocity
