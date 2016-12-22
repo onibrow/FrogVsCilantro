@@ -15,3 +15,6 @@ Checkout those sick [haikus](http://www.ihatecilantro.com/haikus/)!
 *However, I do like frogs*
 
 *Please save the cute frog*
+
+***
+![Demo](demo.gif)
