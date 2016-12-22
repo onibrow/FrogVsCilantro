@@ -46,7 +46,7 @@ class cilantro(entity):
     def refresh(self, playerPos):
         if (self.x < 0 or self.x > self.maxX or self.y < 0 or self.y > self.maxY):
             self.x, self.y = self.origX, self.origY
-            self.velocity = random.randrange(3, 8)
+            self.velocity = random.randrange(5, 9)
             x = playerPos[0] - self.getPos()[0] + 0.1
             y = playerPos[1] - self.getPos()[1] + 0.1
             norm = math.sqrt(x * x + y * y)
