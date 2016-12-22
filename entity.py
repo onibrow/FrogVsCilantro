@@ -9,6 +9,7 @@ class entity():
         self.y = y
         self.img = pygame.image.load(img)
         self.size = Image.open(img).size
+        self.hitScale = min(self.size[0], self.size[1]) * 0.1
 
     def getName(self):
         return name
@@ -20,13 +21,13 @@ class entity():
         return self.img
 
     def getCorners(self):
-        top_right = (self.x + self.size[0], self.y)
-        top_left = self.getPos()
-        bottom_right = (self.x + self.size[0], self.y + self.size[1])
-        bottom_left = (self.x, self.y + self.size[1])
+        top_right = (self.x + self.size[0] - self.hitScale, self.y + self.hitScale)
+        top_left = (self.getPos()[0] + self.hitScale, self.getPos()[1] + self.hitScale)
+        bottom_right = (self.x + self.size[0] - self.hitScale, self.y + self.size[1] - self.hitScale)
+        bottom_left = (self.x + self.hitScale, self.y + self.size[1] - self.hitScale)
 
         return (top_right, top_left, bottom_right, bottom_left)
-    
+
     @staticmethod
     def pointInArea(point, area):
         x = point[0] < area[0][0] and point[0] > area[1][0]
@@ -41,6 +42,6 @@ class entity():
         for j in a2.getCorners():
             x = x or entity.pointInArea(j, a1.getCorners())
         return x
-                 
+
     def collide(self, other):
-        return entity.areaInArea(self, other) 
+        return entity.areaInArea(self, other)
