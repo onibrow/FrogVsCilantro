@@ -4,7 +4,7 @@
 
 *However, I do like frogs*
 
-*Save that cute little frog*
+*Please save the cute frog*
 
 Checkout my [page](http://www.ihatecilantro.com/member.php?user=onibrow)
 
