@@ -1,6 +1,8 @@
 # Frogs VS Cilantro
 
-To play the game, type `python2 game.py`
+To play, first clone then type while in the directory: `python2 game.py`
+
+Controls: WASD to move
 
 Checkout my [page](http://www.ihatecilantro.com/member.php?user=onibrow)
 
