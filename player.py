@@ -14,7 +14,7 @@ class player(entity):
 
     def move(self, left, right, up, down):
         self.isMovingForward, self.isMovingBack = False, False
-    
+
         if left:
             self.x = max(self.x - 3, 0)
             self.isMovingForward = True
@@ -31,13 +31,13 @@ class player(entity):
     def toggleImage(self):
         if self.isMovingBack:
             self.img, self.img2 = self.back1, self.back2
-            self.movecount += 1 
+            self.movecount += 1
             if self.movecount > 16:
                 self.which_image *= -1
                 self.movecount = 0
         elif self.isMovingForward:
             self.img, self.img2 = self.front1, self.front2
-            self.movecount += 1    
+            self.movecount += 1
             if self.movecount > 16:
                 self.which_image *= -1
                 self.movecount = 0
